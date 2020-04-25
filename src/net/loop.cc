@@ -23,4 +23,5 @@ void Loop::start_loop(){
         loop();
         std::cout<<"is looping"<<std::endl;
     }
+    std::cout<<"loop quit"<<std::endl;
 }
