@@ -37,20 +37,3 @@ ssize_t IOBuffer::ReadFd(int fd, int* saved_errno)
     return n;
 }
 
-// 循环读取fd上的数据
-// ssize_t IOBuffer::ReadFdRepeatedly(int fd, int* saved_errno)
-// {
-//     int n = 0;
-//     int nread = 0;
-//     while ((nread = read(fd, GetWritablePtr(), GetWritableSize())) > 0)
-//     {
-//         n += nread;
-//         write_index_ += nread;
-//     }
-//     if (nread == -1 && errno != EAGAIN)
-//     {
-//         *saved_errno = errno;
-//     }
-//     *saved_errno = errno;
-//     return n;
-// }

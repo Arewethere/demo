@@ -1,3 +1,6 @@
+/*
+应用缓冲区，参考了muduo
+*/
 #ifndef IO_BUFFER_H
 #define IO_BUFFER_H
 
@@ -101,26 +104,6 @@ public:
         return result;
     }
 
-    // void RetrieveInt64()
-    // {
-    //     Retrieve(sizeof(int64_t));
-    // }
-
-    // void RetrieveInt32()
-    // {
-    //     Retrieve(sizeof(int32_t));
-    // }
-
-    // void RetrieveInt16()
-    // {
-    //     Retrieve(sizeof(int16_t));
-    // }
-
-    // void RetrieveInt8()
-    // {
-    //     Retrieve(sizeof(int8_t));
-    // }
-
     
     // 确保有足够空间可写
     void EnsureWritable(size_t len)
@@ -152,59 +135,7 @@ public:
         Append(str.data(), str.size());
     }
 
-    // void AppendInt64(int64_t x)
-    // {
-    //     int64_t be64 = be64toh(x);
-    //     Append(&be64, sizeof(be64));
-    // }
-
-    // void AppendInt32(int32_t x)
-    // {
-    //     int64_t be32 = ntohl(x);
-    //     Append(&be32, sizeof(be32));
-    // }
-
-    // void AppendInt16(int16_t x)
-    // {
-    //     int64_t be16 = ntohs(x);
-    //     Append(&be16, sizeof(be16));
-    // }
-
-    // void AppendInt8(int8_t x)
-    // {
-    //     Append(&x, sizeof(x));
-    // }
-
-    // int64_t ReadInt64()
-    // {
-    //     int64_t result = 0;
-    //     memcpy(&result, GetReadablePtr(), sizeof(result));
-    //     RetrieveInt64();
-    //     return be64toh(result);
-    // }
-
-    // int32_t ReadInt32()
-    // {
-    //     int32_t result = 0;
-    //     memcpy(&result, GetReadablePtr(), sizeof(result));
-    //     RetrieveInt32();
-    //     return ntohl(result);
-    // }
-
-    // int16_t ReadInt16()
-    // {
-    //     int16_t result = 0;
-    //     memcpy(&result, GetReadablePtr(), sizeof(result));
-    //     RetrieveInt16();
-    //     return ntohs(result);
-    // }
-
-    // int8_t ReadInt8()
-    // {
-    //     int8_t result = *GetReadablePtr();
-    //     RetrieveInt8();
-    //     return result;
-    // }
+    
 
     // 添加数据进预留区
     void Prepend(const void* data, size_t len)
@@ -214,28 +145,7 @@ public:
         std::copy(d, d + len, GetBegin() + read_index_);
     }
 
-    // void PrependInt64(int64_t x)
-    // {
-    //     int64_t be64 = be64toh(x);
-    //     Prepend(&be64, sizeof(be64));
-    // }
-
-    // void PrependInt32(int32_t x)
-    // {
-    //     int32_t be32 = ntohl(x);
-    //     Prepend(&be32, sizeof(be32));
-    // }
-
-    // void PrependInt16(int16_t x)
-    // {
-    //     int16_t be16 = ntohs(x);
-    //     Prepend(&be16, sizeof(be16));
-    // }
-
-    // void PrependInt8(int8_t x)
-    // {
-    //     Prepend(&x, sizeof(x));
-    // }
+    
 
     // 收缩缓冲区大小
     void Shrink(size_t reserve)
