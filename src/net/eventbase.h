@@ -25,7 +25,10 @@ public:
     void Set_event_in(){event_|=EPOLLIN;}
     //设置关注可写事件
     void Set_event_out(){event_|=EPOLLOUT;}
-
+    //设置取消可读
+    void Set_disable_in(){event_&=~EPOLLIN;}
+    //设置取消可写
+    void Set_disable_out(){event_&=EPOLLOUT;}
     //返回活跃的事件
     void Return_revent(int revent){revent_=revent;}
 
@@ -35,6 +38,9 @@ public:
     //获取该eventbase的文件描述符
     int getFd_(){return fd_;}   
     int getEvent_(){return event_;} 
+
+    //判断是否关注了可写事件
+    bool IsWriting()const{return event_&EPOLLOUT;}
 private:
     //绑定的一个唯一文件描述符
     int fd_;
